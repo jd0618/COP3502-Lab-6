@@ -1,4 +1,5 @@
 # created by Jaden Despeines, jdespeines@ufl.edu
+# decoder by Kyle Weiner kyleweiner@ufl.edu
 # 8 digit integer password encoder
 
 
@@ -14,10 +15,12 @@ def encode_string(s):
     return encode
 
 
-def decode_string(s):
-    d = ""
-    # code goes here ;)
-    return d
+def decode(encode):
+    password = ''
+    for digit in encode:
+        decoded_digit = str((int(digit) - 3) % 10)
+        password += decoded_digit
+    return password
 
 
 def main():
@@ -28,11 +31,11 @@ def main():
         if menu_option == "1":
             # encoder menu option
             password = input("Please enter your password to encode: ")
-            e_pword = encode_string(password)
+            encode = encode_string(password)
             print("Your password has been encoded and stored!")
         if menu_option == "2":
-            # decoder menu option which uses e_pword and decode_string(s)
-            continue
+            password = decode(encode)
+            print(f"The encoded password is {encode}, and the original password is {password}.")
         if menu_option == "3":
             # break to quit program
             break
